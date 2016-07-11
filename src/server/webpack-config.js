@@ -129,7 +129,16 @@ export default (options = {}) => {
 
   // Configure CSS loaders
   const { loaders } = config.module;
-  const { cssModules } = options;
+  const { cssModules, additionalLoaders } = options;
+  
+  // load additional loaders
+  if (additionalLoaders){
+    additionalLoaders.forEach(loader => {
+      loader.test = new RegExp(loader.test);
+      loaders.push(loader);
+    });
+  }
+  
   const simpleCssLoader = { test: /\.css$/, loader: 'style!css' };
   if (cssModules) {
     let simpleLoaderAdded = false;
