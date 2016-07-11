@@ -60,6 +60,7 @@ export default (options = {}) => new Promise((resolve, reject) => {
       || YAML_CONFIG.images
       || { baseUrl: `/${ packageJson.name }/images`, dir: 'images' };
     const cssModules = options.cssModules || YAML_CONFIG.cssModules;
+    const loaders = options.loaders || YAML_CONFIG.loaders;
 
     // Ensure required values exist.
     if (R.isNil(entry) || R.isEmpty(entry)) { throw new Error('Entry path(s) must be specified.'); }
@@ -90,6 +91,7 @@ export default (options = {}) => new Promise((resolve, reject) => {
       entry: specs,
       outputFile: 'specs.js',
       cssModules,
+      loaders
     });
 
     // Create the development server.
