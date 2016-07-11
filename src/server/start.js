@@ -91,7 +91,7 @@ export default (options = {}) => new Promise((resolve, reject) => {
       entry: specs,
       outputFile: 'specs.js',
       cssModules,
-      loaders
+      additionalLoaders: loaders
     });
 
     // Create the development server.
